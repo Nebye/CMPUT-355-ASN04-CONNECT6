@@ -2,7 +2,7 @@
 Assignment 04 for CMPUT 355
 
 ## Idea 01
-### Othello 
+### Othello Bot
 #### First Move
 - If bot goes first pick a random tile to start
 - If opponent goes first then start implementing MCTS
