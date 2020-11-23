@@ -17,13 +17,17 @@ def play(move):
     location = input("What is your play "+player+" [format:x y]: ") 
     
     #while(location != valid):
-    #    location = input("Invalid move, please try again: ")
-        
-    board(location)
+        #location = input("Invalid move, please try again: ")
+    #    pass
 
-def board(last_play):
+    counter = 0
     for i in range(board_size):
-        print("* "*board_size)
+        if counter == 0:
+            for x in range(0, board_size+1):
+                print(x, end=" ") 
+            print("\n")
+        counter = counter + 1 
+        print(counter, "* "*board_size)
         
     # check if anyone has won
     
