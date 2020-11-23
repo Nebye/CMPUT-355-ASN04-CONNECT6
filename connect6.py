@@ -1,5 +1,5 @@
 # Just in case I don't get the othello viz/player working on time, I'm going to make this
-# This is a viz for Checkers (which is a valid game for the CGO games comp so it should be valid for this assignment)
+# This is a viz for Connect6 (which is a valid game for the CGO games comp so it should be valid for this assignment)
 
 import math
 import numpy as np
@@ -27,11 +27,15 @@ def board(last_play):
         
     # check if anyone has won
     
-    
 def main():
-    first = random.randint(0,1) # 0 is black and 1 is white
-    
+    # first = random.randint(0,1) # 0 is black and 1 is white
+    # according to rules black always plays first
     first = 0
+    
+    global board_size
+    board_size = int(input("What is your board size (min of 19): "))
+    while(board_size < 19):
+        board_size = int(input("What is your board size (min of 19): "))
     play(first)
     
 
