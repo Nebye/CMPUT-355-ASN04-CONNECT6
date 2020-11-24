@@ -13,21 +13,27 @@ def play(move):
         player = 'black'
     else:
         player = 'white'
-        
-    location = input("What is your play "+player+" [format:x y]: ") 
     
-    #while(location != valid):
-        #location = input("Invalid move, please try again: ")
-    #    pass
+        
+    loc_x, loc_y = input("What is your play "+player+" [format:xy]: ").split()
+    
+    # swap these with try except handlers
+    while(len() != 2):
+        print("Invalid input!")
+        loc_x, loc_y = input("What is your play "+player+" [format:xy]: ").split()
+    
+    while(board[loc_x][loc_y] != '*'):
+        print("Invalid input!")
+        loc_x, loc_y = input("What is your play "+player+" [format:xy]: ").split()
 
     counter = 0
-    for i in range(board_size):
-        if counter == 0:
-            for x in range(0, board_size+1):
-                print(x, end=" ") 
-            print("\n")
-        counter = counter + 1 
-        print(counter, "* "*board_size)
+    
+    board[0][1] = 2
+    
+    # prints current board/grid/game
+    for board_size in board:
+        print(board_size)
+    
         
     # check if anyone has won
     
@@ -36,10 +42,14 @@ def main():
     # according to rules black always plays first
     first = 0
     
-    global board_size
+    global board # init grid
+    global board_size # init dimensions for grid
+    
     board_size = int(input("What is your board size (min of 19): "))
     while(board_size < 19):
         board_size = int(input("What is your board size (min of 19): "))
+        
+    board = [[0 for i in range(board_size)] for j in range(board_size)]
     play(first)
     
 
