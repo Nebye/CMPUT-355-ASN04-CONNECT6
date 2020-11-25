@@ -67,11 +67,23 @@ def play(move):
         tile = board[loc_x + index][loc_y + index]
         diagonal01.append(tile)
         index = index +1
+    print("diagonal01")
     print(diagonal01)
     
-    diagonal02 = [] # for diagonal negative up ←↑
-    #diagonal02 = diagonal02.reverse() # reverse list 
-    #diagonal01.insert(0, diagonal02) # insert to the first half of the first diagonal
+    diagonal02 = [] # for diagonal negative up ←↑ 
+    index = 1 # start at 1 as to exclude the current move - it was already included in diagonal01
+    while (loc_x - index  > 0 or loc_y - index  > 0):
+        tile = board[loc_x - index][loc_y - index]
+        diagonal02.append(tile)
+        index = index +1    
+    print("diagonal01")
+    diagonal02.reverse() # reverse as to make it align with the direction of the first diagonal
+    print(diagonal02)    
+    
+    diagonalPrime01 = [] # combines diagonal01 and diagonal02
+    diagonalPrime01.extend(diagonal02) # insert to the first half of the first diagonal
+    diagonalPrime01.extend(diagonal01)
+    print(diagonalPrime01)  
     
     diagonal03 = [] # for diagonal positive up →↑
     
