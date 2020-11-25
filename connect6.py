@@ -107,7 +107,14 @@ def play(move):
     
     # diagonal 02 (SW)
     
+    """ After lists made for 
+    - diagonalPrime01: DONE
+    - diagonalPrime02: TODO
+    - horizontal: TODO
+    - vertical: TODO
     
+    - Implement way to find sublist of either 000000 or 111111 within the 4 lists above: https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-32.php
+    """
     
     
     if move == 0:
