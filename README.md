@@ -9,5 +9,5 @@ User Requirements:
 * Python Environment (only tested for python3)
 
 To Run:
-1. You can either run the "connect6.exe" file found in the CMPUT-355-ASN04-CONNECT6\dist\connect6 directory
-2. Or, open a terminal in the root folder of the repository and type in the command:"python connect6.py"
+1. Open a terminal in the root folder of the repository and type in the command:"python connect6.py"
+2. Alternatively, if you are on a windows machine, you may also be able to run the "connect6.exe" file found in the CMPUT-355-ASN04-CONNECT6\dist\connect6 directory
