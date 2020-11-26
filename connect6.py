@@ -30,7 +30,7 @@ def play(move):
             loc_x, loc_y = input("What is your play "+player+" [format:row column]: ").split()
             loc_x = int(loc_x)
             loc_y = int(loc_y) 
-            if (board[int(loc_x)][int(loc_y)] != 7):
+            if (loc_x >= board_size or loc_y>= board_size or board[int(loc_x)][int(loc_y)] != 7):
                 raise ValueError
             break
         except ValueError:
@@ -75,7 +75,7 @@ def play(move):
     
     
     
-    diagonal01 = [] # for diagonal positive down →↓
+    diagonal01 = [] # for diagonal positive down â†’â†“
     index = 0
     while ((loc_x + index < board_size) and (loc_y + index < board_size)): # either hit row 19 or col 19
         tile = board[loc_x + index][loc_y + index]
@@ -84,7 +84,7 @@ def play(move):
     #print("diagonal01")
     #print(diagonal01)
     
-    diagonal02 = [] # for diagonal negative up ←↑ 
+    diagonal02 = [] # for diagonal negative up â†�â†‘ 
     index = 1 # start at 1 as to exclude the current move - it was already included in diagonal01
     while ((loc_x - index > -1) and (loc_y - index > -1)): # either hit row 0 or col 0
         tile = board[loc_x - index][loc_y - index]
@@ -104,7 +104,7 @@ def play(move):
     
     
     
-    diagonal03 = [] # for diagonal positive up →↑
+    diagonal03 = [] # for diagonal positive up â†’â†‘
     index = 1
     while ((loc_x - index > -1) and (loc_y + index < board_size)): # either hit row 0 or col 19
         tile = board[loc_x - index][loc_y + index]
@@ -113,7 +113,7 @@ def play(move):
     #print("diagonal03")
     #print(diagonal03)
     
-    diagonal04 = [] # for diagonal negative down ←↓
+    diagonal04 = [] # for diagonal negative down â†�â†“
     # either hit row 19 or col 0
     index = 0
     while ((loc_x + index < board_size) and (loc_y - index > -1)): # either hit row 19 or col 0

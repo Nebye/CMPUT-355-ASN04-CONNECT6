@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['connect6.py'],
-             pathex=['C:\\Users\\nebye\\Desktop\\CMPUT-355-ASN04'],
+             pathex=['C:\\Users\\nebye\\Desktop\\CMPUT-355-ASN04-CONNECT6'],
              binaries=[],
              datas=[],
              hiddenimports=[],
