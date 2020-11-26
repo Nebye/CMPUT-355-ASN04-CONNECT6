@@ -60,10 +60,15 @@ def play(move):
     # horizontal
     # vertical
     
+    
+    
+    
+    
+    
     # diagonal 01 (SE)
     diagonal01 = [] # for diagonal positive down →↓
     index = 0
-    while (index < board_size-loc_x-1 or index < board_size-loc_y-1):
+    while ((loc_x + index < board_size) and (loc_y + index < board_size)): # either hit row 19 or col 19
         tile = board[loc_x + index][loc_y + index]
         diagonal01.append(tile)
         index = index +1
@@ -72,40 +77,51 @@ def play(move):
     
     diagonal02 = [] # for diagonal negative up ←↑ 
     index = 1 # start at 1 as to exclude the current move - it was already included in diagonal01
-    while (loc_x - index  > 0 or loc_y - index  > 0):
+    while ((loc_x - index > -1) and (loc_y - index > -1)): # either hit row 0 or col 0
         tile = board[loc_x - index][loc_y - index]
         diagonal02.append(tile)
         index = index +1    
-    print("diagonal01")
+    #print("diagonal01")
     diagonal02.reverse() # reverse as to make it align with the direction of the first diagonal
-    print(diagonal02)    
+    #print(diagonal02)    
     
     diagonalPrime01 = [] # combines diagonal01 and diagonal02
     diagonalPrime01.extend(diagonal02) # insert to the first half of the first diagonal
     diagonalPrime01.extend(diagonal01)
+    print("DiagonalPrime01")
     print(diagonalPrime01)  
     
-    diagonal03 = [] # for diagonal positive up →↑
     
+    
+    
+    
+    diagonal03 = [] # for diagonal positive up →↑
+    index = 1
+    while ((loc_x - index > -1) and (loc_y + index < board_size)): # either hit row 0 or col 19
+        tile = board[loc_x - index][loc_y + index]
+        diagonal03.append(tile)
+        index = index + 1
+    print("diagonal03")
+    print(diagonal03)
     
     diagonal04 = [] # for diagonal negative down ←↓
+    # either hit row 19 or col 0
+    index = 0
+    while ((loc_x + index < board_size) and (loc_y - index > -1)): # either hit row 19 or col 0
+        tile = board[loc_x + index][loc_y - index]
+        diagonal04.append(tile)
+        index = index + 1
+    print("diagonal04")
+    print(diagonal04)    
     
-    #print(diagonal01)
-    #print(diagonal02)
-    """
-    [0][1]
     
-    [1][2]
+    diagonal04.reverse() # reverse as to make it align with the direction of the first diagonal   
     
-    [3][2]
-    [4][3]
-    [5][4]
-    [6][5]
-    ...
-    [8][9] either going to get to final x or y
-    """
-    
-    # diagonal 02 (SW)
+    diagonalPrime02 = [] # combines diagonal01 and diagonal02
+    diagonalPrime02.extend(diagonal04) # insert to the first half of the first diagonal
+    diagonalPrime02.extend(diagonal03)
+    print("DiagonalPrime02")
+    print(diagonalPrime02)      
     
     """ After lists made for 
     - diagonalPrime01: DONE
@@ -142,7 +158,7 @@ def main():
     
     print("Welcome to Connect6")
     board_size = int(input("What is your board size (min of 19): "))
-    while(board_size < 10):
+    while(board_size < 10): # change to 19 
         board_size = int(input("What is your board size (min of 19): "))
         
     board = [[7 for i in range(board_size)] for j in range(board_size)]
