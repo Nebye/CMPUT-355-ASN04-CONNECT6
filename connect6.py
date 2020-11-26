@@ -25,17 +25,17 @@ def play(move):
     else:
         player = 'white'
     
-        
-    loc_x, loc_y = input("What is your play "+player+" [format:row column]: ").split()
-    loc_x = int(loc_x)
-    loc_y = int(loc_y)
-    
-    # swap these with try except handlers
-    while(board[int(loc_x)][int(loc_y)] != 7):
-        print("Invalid input!")
-        loc_x, loc_y = input("What is your play "+player+" [format:row column]: ").split()
+    while True:
+        try:
+            loc_x, loc_y = input("What is your play "+player+" [format:row column]: ").split()
+            loc_x = int(loc_x)
+            loc_y = int(loc_y) 
+            if (board[int(loc_x)][int(loc_y)] != 7):
+                raise ValueError
+            break
+        except ValueError:
+            print("Invalid input!")        
 
-    
     
     board[loc_x][loc_y] = move
     
@@ -59,8 +59,8 @@ def play(move):
     # check if the current player has made a winning move
     # horizontal
     horizontal = board[loc_x]
-    print("hor")
-    print(horizontal)
+    #print("hor")
+    #print(horizontal)
     
     # vertical
     vertical = []
@@ -68,8 +68,8 @@ def play(move):
     while (count < board_size):
         vertical.append(board[count][loc_y])
         count = count +1
-    print("vert")
-    print(vertical)
+    #print("vert")
+    #print(vertical)
     
     
     
@@ -97,8 +97,8 @@ def play(move):
     diagonalPrime01 = [] # combines diagonal01 and diagonal02
     diagonalPrime01.extend(diagonal02) # insert to the first half of the first diagonal
     diagonalPrime01.extend(diagonal01)
-    print("DiagonalPrime01")
-    print(diagonalPrime01)  
+    #print("DiagonalPrime01")
+    #print(diagonalPrime01)  
     
     
     
@@ -110,8 +110,8 @@ def play(move):
         tile = board[loc_x - index][loc_y + index]
         diagonal03.append(tile)
         index = index + 1
-    print("diagonal03")
-    print(diagonal03)
+    #print("diagonal03")
+    #print(diagonal03)
     
     diagonal04 = [] # for diagonal negative down ←↓
     # either hit row 19 or col 0
@@ -120,8 +120,8 @@ def play(move):
         tile = board[loc_x + index][loc_y - index]
         diagonal04.append(tile)
         index = index + 1
-    print("diagonal04")
-    print(diagonal04)    
+    #print("diagonal04")
+    #print(diagonal04)    
     
     
     diagonal04.reverse() # reverse as to make it align with the direction of the first diagonal   
@@ -129,8 +129,8 @@ def play(move):
     diagonalPrime02 = [] # combines diagonal01 and diagonal02
     diagonalPrime02.extend(diagonal04) # insert to the first half of the first diagonal
     diagonalPrime02.extend(diagonal03)
-    print("DiagonalPrime02")
-    print(diagonalPrime02)      
+    #print("DiagonalPrime02")
+    #print(diagonalPrime02)      
     
 
     # Win Check
@@ -143,17 +143,7 @@ def play(move):
     else:
         win = False
     
-    
-    
-    """ After lists made for 
-    - diagonalPrime01: DONE
-    - diagonalPrime02: DONE
-    - horizontal: DONE
-    - vertical: DONE
-    
-    - Implement way to find sublist of either 000000 or 111111 within the 4 lists above: https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-32.php
-    - Check for win scenarios: TODO
-    """
+
     
     
     if move == 0:
@@ -171,6 +161,14 @@ def play(move):
     else:
         play(move)
     
+    
+
+def is_Sublist(lst1, lst2):
+    ls1 = [element for element in lst1 if element in lst2]
+    ls2 = [element for element in lst2 if element in lst1]
+    return ls1 == ls2
+
+
 def main():
     # first = random.randint(0,1) # 0 is black and 1 is white
     # according to rules black always plays first
@@ -180,17 +178,17 @@ def main():
     global board_size # init dimensions for grid
     
     print("Welcome to Connect6")
-    board_size = int(input("What is your board size (min of 19): "))
-    while(board_size < 10): # change to 19 
-        board_size = int(input("What is your board size (min of 19): "))
+    while True:
+        try:
+            board_size = int(input("What is your board size (min of 19): "))
+            if(board_size < 10): # change to 19
+                raise ValueError
+            break
+        except ValueError:
+            print("Invalid Response") 
         
     board = [[7 for i in range(board_size)] for j in range(board_size)]
     play(first)
     
-
-def is_Sublist(lst1, lst2):
-    ls1 = [element for element in lst1 if element in lst2]
-    ls2 = [element for element in lst2 if element in lst1]
-    return ls1 == ls2
-
+    
 main()
