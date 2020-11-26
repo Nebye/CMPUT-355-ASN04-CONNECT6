@@ -153,11 +153,18 @@ def play(move):
         
     if(win == True): # replace with check to see if anyone won
         print(player, "wins!")
-        play_again = str(input("Would you like to play again [Y/N]?"))
+        while True:
+            try:        
+                play_again = str(input("Would you like to play again [Y/N]?"))
+                if (play_again != "Y" and play_again != "N"):
+                    raise ValueError
+                break
+            except ValueError:
+                print("Invalid Response")      
         if(play_again == "Y"):
             main()
         else:
-            sys.exit()            
+            sys.exit()      
     else:
         play(move)
     
@@ -181,7 +188,7 @@ def main():
     while True:
         try:
             board_size = int(input("What is your board size (min of 19): "))
-            if(board_size < 10): # change to 19
+            if(board_size < 19):
                 raise ValueError
             break
         except ValueError:
