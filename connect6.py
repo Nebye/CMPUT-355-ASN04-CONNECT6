@@ -58,22 +58,31 @@ def play(move):
         
     # check if the current player has made a winning move
     # horizontal
+    horizontal = board[loc_x]
+    print("hor")
+    print(horizontal)
+    
     # vertical
+    vertical = []
+    count = 0
+    while (count < board_size):
+        vertical.append(board[count][loc_y])
+        count = count +1
+    print("vert")
+    print(vertical)
     
     
     
     
     
-    
-    # diagonal 01 (SE)
     diagonal01 = [] # for diagonal positive down →↓
     index = 0
     while ((loc_x + index < board_size) and (loc_y + index < board_size)): # either hit row 19 or col 19
         tile = board[loc_x + index][loc_y + index]
         diagonal01.append(tile)
         index = index +1
-    print("diagonal01")
-    print(diagonal01)
+    #print("diagonal01")
+    #print(diagonal01)
     
     diagonal02 = [] # for diagonal negative up ←↑ 
     index = 1 # start at 1 as to exclude the current move - it was already included in diagonal01
@@ -123,11 +132,17 @@ def play(move):
     print("DiagonalPrime02")
     print(diagonalPrime02)      
     
+    
+    
+    
+    
+    
+    
     """ After lists made for 
     - diagonalPrime01: DONE
-    - diagonalPrime02: TODO
-    - horizontal: TODO
-    - vertical: TODO
+    - diagonalPrime02: DONE
+    - horizontal: DONE
+    - vertical: DONE
     
     - Implement way to find sublist of either 000000 or 111111 within the 4 lists above: https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-32.php
     """
