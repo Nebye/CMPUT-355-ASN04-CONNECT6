@@ -188,25 +188,9 @@ def main():
     play(first)
     
 
-def is_Sublist(l, s):
-    sub_set = False
-    if s == []:
-        sub_set = True
-    elif s == l:
-        sub_set = True
-    elif len(s) > len(l):
-        sub_set = False
-
-    else:
-        for i in range(len(l)):
-            if l[i] == s[0]:
-                n = 1
-                while (n < len(s)) and (l[i+n] == s[n]):
-                    n += 1
-
-                if n == len(s):
-                    sub_set = True
-
-    return sub_set
+def is_Sublist(lst1, lst2):
+    ls1 = [element for element in lst1 if element in lst2]
+    ls2 = [element for element in lst2 if element in lst1]
+    return ls1 == ls2
 
 main()
