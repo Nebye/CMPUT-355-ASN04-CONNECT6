@@ -132,9 +132,16 @@ def play(move):
     print("DiagonalPrime02")
     print(diagonalPrime02)      
     
-    
-    
-    
+
+    # Win Check
+    if move == 0:
+        b = [0] * 6
+    else:
+        b = [1] * 6
+    if (is_Sublist(diagonalPrime01, b) == True or is_Sublist(diagonalPrime02, b) == True or is_Sublist(horizontal, b) == True or is_Sublist(vertical, b) == True):
+        win = True
+    else:
+        win = False
     
     
     
@@ -145,6 +152,7 @@ def play(move):
     - vertical: DONE
     
     - Implement way to find sublist of either 000000 or 111111 within the 4 lists above: https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-32.php
+    - Check for win scenarios: TODO
     """
     
     
@@ -153,7 +161,7 @@ def play(move):
     else:
         move = 0    
         
-    if(move == 8): # replace with check to see if anyone won
+    if(win == True): # replace with check to see if anyone won
         print(player, "wins!")
         play_again = str(input("Would you like to play again [Y/N]?"))
         if(play_again == "Y"):
@@ -179,5 +187,26 @@ def main():
     board = [[7 for i in range(board_size)] for j in range(board_size)]
     play(first)
     
+
+def is_Sublist(l, s):
+    sub_set = False
+    if s == []:
+        sub_set = True
+    elif s == l:
+        sub_set = True
+    elif len(s) > len(l):
+        sub_set = False
+
+    else:
+        for i in range(len(l)):
+            if l[i] == s[0]:
+                n = 1
+                while (n < len(s)) and (l[i+n] == s[n]):
+                    n += 1
+
+                if n == len(s):
+                    sub_set = True
+
+    return sub_set
 
 main()
