@@ -1,8 +1,8 @@
 # CMPUT-355-ASN04
 Assignment 04 for CMPUT 355
 
-## Idea 01
-### Othello Bot
+~~## Idea 01~~
+~~### Othello Bot~~
 #### First Move
 - If bot goes first pick a random tile to start
 - If opponent goes first then start implementing MCTS
@@ -13,3 +13,7 @@ the path that is most unsuccessfull for the opponent (at which path the opponent
 
 #### MCTS stuff
 	- If end of path is null (game does not go that far using those potential moves, go one branch back up till it is not null)
+	
+## Idea 02
+### Connect6 Vizualizer 
+### If I run out of time to implement Othello Bot swap to this
